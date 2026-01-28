@@ -1,0 +1,450 @@
+---
+const siteTitle = "Amorphing · Responsive Brand Design";
+const siteDescription = "AI-native brand systems that morph across ventures, languages, and contexts. Built with parametric design, SSOT principles, and radical transparency.";
+const baseUrl = "https://amorphing.com";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="generator" content={Astro.generator} />
+
+	<!-- Primary Meta Tags -->
+	<title>{siteTitle}</title>
+	<meta name="title" content={siteTitle} />
+	<meta name="description" content={siteDescription} />
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={baseUrl} />
+	<meta property="og:title" content={siteTitle} />
+	<meta property="og:description" content={siteDescription} />
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content={baseUrl} />
+	<meta property="twitter:title" content={siteTitle} />
+	<meta property="twitter:description" content={siteDescription} />
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+	<!-- JSON-LD Structured Data -->
+	<script type="application/ld+json" set:html={JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		"name": "Amorphing",
+		"description": "AI-native brand systems that morph across contexts",
+		"url": baseUrl,
+		"logo": `${baseUrl}/logo.svg`,
+		"sameAs": []
+	})} />
+</head>
+<body>
+	<main>
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="logo-container">
+				<svg class="logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+					<!-- Circle -->
+					<circle cx="100" cy="100" r="90" fill="#8b5cf6" />
+					<!-- Letter A (centered) -->
+					<text x="100" y="100"
+					      font-family="Roboto Slab, serif"
+					      font-size="120"
+					      font-weight="600"
+					      fill="white"
+					      text-anchor="middle"
+					      dominant-baseline="central">A</text>
+				</svg>
+				<h1 class="venture-name">Amorphing</h1>
+			</div>
+
+			<p class="tagline">Responsive Brand Design</p>
+			<p class="description">{siteDescription}</p>
+		</section>
+
+		<!-- The 5 Pillars -->
+		<section class="pillars">
+			<h2>The 5 Pillars of Amorphic Design</h2>
+
+			<div class="pillar-grid">
+				<article class="pillar">
+					<h3>1. Data Transparency</h3>
+					<p>Every design decision is traceable to source data (LAB, RAL, WCAG). No magic, no guessing.</p>
+				</article>
+
+				<article class="pillar">
+					<h3>2. Parametric Everything</h3>
+					<p>One input generates infinite variants. Colors, logos, layouts morph from shared DNA.</p>
+				</article>
+
+				<article class="pillar">
+					<h3>3. No Decoration</h3>
+					<p>Form follows function. Geometric primitives (circles, lines, grids). Beauty emerges from constraints.</p>
+				</article>
+
+				<article class="pillar">
+					<h3>4. Accessibility First</h3>
+					<p>WCAG AAA by default. Design systems that work for everyone, everywhere.</p>
+				</article>
+
+				<article class="pillar">
+					<h3>5. Modular DNA</h3>
+					<p>Ventures inherit core traits, express unique phenotypes. One OS, infinite organisms.</p>
+				</article>
+			</div>
+		</section>
+
+		<!-- Showcase: 4 Ventures -->
+		<section class="ventures">
+			<h2>Built with Amorphing</h2>
+			<p class="ventures-desc">Four ventures, one design DNA. Watch as brand identity morphs across contexts:</p>
+
+			<div class="venture-grid">
+				<div class="venture-card" style="--venture-color: #ff6b35;">
+					<svg class="venture-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="60" cy="60" r="54" fill="#ff6b35" />
+						<text x="60" y="60"
+						      font-family="Roboto Slab, serif"
+						      font-size="72"
+						      font-weight="600"
+						      fill="white"
+						      text-anchor="middle"
+						      dominant-baseline="central">b</text>
+					</svg>
+					<h3>brainfruit</h3>
+					<p>Venture Builder · Orange</p>
+				</div>
+
+				<div class="venture-card" style="--venture-color: #3399ff;">
+					<svg class="venture-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="60" cy="60" r="54" fill="#3399ff" />
+						<text x="60" y="60"
+						      font-family="Roboto Slab, serif"
+						      font-size="72"
+						      font-weight="600"
+						      fill="white"
+						      text-anchor="middle"
+						      dominant-baseline="central">P</text>
+					</svg>
+					<h3>PRIMOVIVO</h3>
+					<p>Interior Design · Blue</p>
+				</div>
+
+				<div class="venture-card" style="--venture-color: #8b5cf6;">
+					<svg class="venture-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="60" cy="60" r="54" fill="#8b5cf6" />
+						<text x="60" y="60"
+						      font-family="Roboto Slab, serif"
+						      font-size="72"
+						      font-weight="600"
+						      fill="white"
+						      text-anchor="middle"
+						      dominant-baseline="central">A</text>
+					</svg>
+					<h3>Amorphing</h3>
+					<p>Brand Design · Purple</p>
+				</div>
+
+				<div class="venture-card" style="--venture-color: #10b981;">
+					<svg class="venture-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="60" cy="60" r="54" fill="#10b981" />
+						<text x="60" y="60"
+						      font-family="Roboto Slab, serif"
+						      font-size="72"
+						      font-weight="600"
+						      fill="white"
+						      text-anchor="middle"
+						      dominant-baseline="central">V</text>
+					</svg>
+					<h3>Venture 04</h3>
+					<p>Coming Soon · Emerald</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA -->
+		<section class="cta">
+			<h2>Ready to morph your brand?</h2>
+			<p>Amorphing is in private beta. Request early access:</p>
+			<a href="mailto:hello@amorphing.com" class="cta-button">hello@amorphing.com</a>
+		</section>
+
+		<!-- Footer -->
+		<footer>
+			<p>© 2026 Amorphing · Part of <a href="https://brainfruit.de">brainfruit</a> · Built with <a href="https://astro.build">Astro</a></p>
+			<p class="footer-meta">Open Source · AI-Native · WCAG AAA</p>
+		</footer>
+	</main>
+
+	<style>
+		:root {
+			--purple: #8b5cf6;
+			--purple-dark: #7c3aed;
+			--gray-50: #f9fafb;
+			--gray-100: #f3f4f6;
+			--gray-200: #e5e7eb;
+			--gray-700: #374151;
+			--gray-800: #1f2937;
+			--gray-900: #111827;
+			--spacing: 8px;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Roboto', sans-serif;
+			line-height: 1.6;
+			color: var(--gray-800);
+			background: var(--gray-50);
+		}
+
+		main {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: calc(var(--spacing) * 4);
+		}
+
+		/* Hero Section */
+		.hero {
+			text-align: center;
+			padding: calc(var(--spacing) * 12) 0 calc(var(--spacing) * 8);
+		}
+
+		.logo-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: calc(var(--spacing) * 3);
+			margin-bottom: calc(var(--spacing) * 4);
+		}
+
+		.logo {
+			width: 120px;
+			height: 120px;
+			filter: drop-shadow(0 4px 16px rgba(139, 92, 246, 0.3));
+		}
+
+		.venture-name {
+			font-family: 'Roboto Slab', serif;
+			font-size: 4rem;
+			font-weight: 600;
+			color: var(--purple);
+			margin: 0;
+		}
+
+		.tagline {
+			font-size: 1.5rem;
+			font-weight: 500;
+			color: var(--gray-700);
+			margin-bottom: calc(var(--spacing) * 2);
+		}
+
+		.description {
+			font-size: 1.125rem;
+			color: var(--gray-700);
+			max-width: 700px;
+			margin: 0 auto;
+		}
+
+		/* Pillars Section */
+		.pillars {
+			padding: calc(var(--spacing) * 8) 0;
+			background: white;
+			border-radius: calc(var(--spacing) * 2);
+			margin-bottom: calc(var(--spacing) * 6);
+		}
+
+		.pillars h2 {
+			font-family: 'Roboto Slab', serif;
+			font-size: 2.5rem;
+			text-align: center;
+			margin-bottom: calc(var(--spacing) * 6);
+			color: var(--gray-900);
+		}
+
+		.pillar-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: calc(var(--spacing) * 4);
+			padding: 0 calc(var(--spacing) * 4);
+		}
+
+		.pillar {
+			padding: calc(var(--spacing) * 3);
+			border-left: 4px solid var(--purple);
+		}
+
+		.pillar h3 {
+			font-family: 'Roboto Slab', serif;
+			font-size: 1.25rem;
+			margin-bottom: calc(var(--spacing) * 2);
+			color: var(--purple);
+		}
+
+		.pillar p {
+			color: var(--gray-700);
+			line-height: 1.7;
+		}
+
+		/* Ventures Section */
+		.ventures {
+			padding: calc(var(--spacing) * 8) 0;
+		}
+
+		.ventures h2 {
+			font-family: 'Roboto Slab', serif;
+			font-size: 2.5rem;
+			text-align: center;
+			margin-bottom: calc(var(--spacing) * 2);
+			color: var(--gray-900);
+		}
+
+		.ventures-desc {
+			text-align: center;
+			font-size: 1.125rem;
+			color: var(--gray-700);
+			margin-bottom: calc(var(--spacing) * 6);
+		}
+
+		.venture-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			gap: calc(var(--spacing) * 4);
+		}
+
+		.venture-card {
+			background: white;
+			border-radius: calc(var(--spacing) * 2);
+			padding: calc(var(--spacing) * 4);
+			text-align: center;
+			border: 2px solid var(--gray-200);
+			transition: all 0.3s ease;
+		}
+
+		.venture-card:hover {
+			border-color: var(--venture-color);
+			box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+			transform: translateY(-4px);
+		}
+
+		.venture-logo {
+			width: 80px;
+			height: 80px;
+			margin-bottom: calc(var(--spacing) * 2);
+		}
+
+		.venture-card h3 {
+			font-family: 'Roboto Slab', serif;
+			font-size: 1.5rem;
+			margin-bottom: calc(var(--spacing));
+			color: var(--gray-900);
+		}
+
+		.venture-card p {
+			color: var(--gray-700);
+			font-size: 0.875rem;
+		}
+
+		/* CTA Section */
+		.cta {
+			text-align: center;
+			padding: calc(var(--spacing) * 10) calc(var(--spacing) * 4);
+			background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+			border-radius: calc(var(--spacing) * 2);
+			color: white;
+			margin-bottom: calc(var(--spacing) * 6);
+		}
+
+		.cta h2 {
+			font-family: 'Roboto Slab', serif;
+			font-size: 2.5rem;
+			margin-bottom: calc(var(--spacing) * 2);
+		}
+
+		.cta p {
+			font-size: 1.25rem;
+			margin-bottom: calc(var(--spacing) * 4);
+			opacity: 0.95;
+		}
+
+		.cta-button {
+			display: inline-block;
+			padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+			background: white;
+			color: var(--purple);
+			text-decoration: none;
+			border-radius: calc(var(--spacing));
+			font-weight: 600;
+			font-size: 1.125rem;
+			transition: all 0.3s ease;
+		}
+
+		.cta-button:hover {
+			background: var(--gray-100);
+			transform: scale(1.05);
+		}
+
+		/* Footer */
+		footer {
+			text-align: center;
+			padding: calc(var(--spacing) * 4) 0;
+			color: var(--gray-700);
+			border-top: 1px solid var(--gray-200);
+		}
+
+		footer p {
+			margin-bottom: calc(var(--spacing));
+		}
+
+		footer a {
+			color: var(--purple);
+			text-decoration: none;
+		}
+
+		footer a:hover {
+			text-decoration: underline;
+		}
+
+		.footer-meta {
+			font-size: 0.875rem;
+			color: var(--gray-700);
+		}
+
+		/* Responsive */
+		@media (max-width: 768px) {
+			.venture-name {
+				font-size: 2.5rem;
+			}
+
+			.logo {
+				width: 80px;
+				height: 80px;
+			}
+
+			.pillars h2,
+			.ventures h2,
+			.cta h2 {
+				font-size: 2rem;
+			}
+
+			.pillar-grid,
+			.venture-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</body>
+</html>
