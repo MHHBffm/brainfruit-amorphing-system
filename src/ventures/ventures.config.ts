@@ -71,7 +71,7 @@ export const ventures = {
     style: 'purple-deep',
     logo: {
       initial: 'A',
-      position: 'uppercase'
+      position: 'lowercase'  // Name wird zu "amorphing" transformiert
     },
     typography: {
       headingFont: 'Bitter',

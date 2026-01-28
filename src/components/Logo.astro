@@ -1,28 +1,24 @@
 ---
 /**
- * Logo.astro
+ * Logo.astro - Logo System per logo-system-final-concept.html
  *
- * Universal venture logo component.
- * Renders SVG with venture-specific:
- * - Circle gradient (from style)
- * - Initial letter (from venture config)
- * - Venture name text (optional)
+ * Design: Circle (colored gradient) + Text name (black, overlapping)
+ * Example: [Purple Circle] "brainfruit" (black text, overlaps from circle center)
  *
  * Usage:
- * ---
- * import Logo from '../components/Logo.astro';
- * ---
+ * <Logo ventureKey="brainfruit" showName size="medium" />
  *
- * <Logo ventureKey="amorphing" showName size="medium" />
- *
- * Result: Purple circle with 'A', 'Amorphing' text
+ * Sizes:
+ * - small: circle 60px, text 24px
+ * - medium: circle 110px, text 48px
+ * - large: circle 160px, text 64px
  */
 
 import { getVentureWithStyle, isValidVentureKey, type VentureKey } from '../utilities/venture';
 
 interface Props {
   ventureKey: VentureKey;
-  size?: 'small' | 'medium' | 'large'; // 80, 120, 240px
+  size?: 'small' | 'medium' | 'large';
   showName?: boolean;
   className?: string;
 }
@@ -40,115 +36,77 @@ if (!isValidVentureKey(ventureKey)) {
 
 const { venture, style } = getVentureWithStyle(ventureKey);
 
-// Size mapping
-const sizeMap = {
-  small: 80,
-  medium: 120,
-  large: 240
+// Size configuration per design spec
+const sizeConfig = {
+  small: { circle: 60, text: 24, marginLeft: -30 },
+  medium: { circle: 110, text: 48, marginLeft: -55 },
+  large: { circle: 160, text: 64, marginLeft: -80 }
 };
 
-const viewSize = sizeMap[size];
-const centerPos = viewSize / 2;
-const radius = centerPos - 12; // 12px padding
-
-// Font size scales with size
-const fontSizeMap = {
-  small: 48,
-  medium: 72,
-  large: 120
-};
-
-const fontSize = fontSizeMap[size];
+const config = sizeConfig[size];
 ---
 
-<div class={`logo-wrapper ${className}`} data-venture={ventureKey}>
-  <svg
-    viewBox={`0 0 ${viewSize} ${viewSize}`}
-    width={viewSize}
-    height={viewSize}
-    xmlns="http://www.w3.org/2000/svg"
-    class="logo-svg"
-  >
-    <defs>
-      {/* Unique gradient ID per venture to avoid conflicts */}
-      <linearGradient
-        id={`gradient-${ventureKey}-${size}`}
-        x1="0%"
-        y1="0%"
-        x2="100%"
-        y2="100%"
-      >
-        <stop offset="0%" stop-color={style.primary} />
-        <stop offset="100%" stop-color={style.primaryLight} />
-      </linearGradient>
-    </defs>
-
-    {/* Circle with venture gradient */}
-    <circle
-      cx={centerPos}
-      cy={centerPos}
-      r={radius}
-      fill={`url(#gradient-${ventureKey}-${size})`}
+<div class={`logo-container ${className}`} data-venture={ventureKey}>
+  <div class="logo-wrapper">
+    {/* Colored circle with gradient - using HTML div, not SVG */}
+    <div
+      class="circle-bg"
+      style={`
+        width: ${config.circle}px;
+        height: ${config.circle}px;
+        background: linear-gradient(135deg, ${style.primary} 0%, ${style.primaryLight} 100%);
+      `}
     />
 
-    {/* Initial letter */}
-    <text
-      x={centerPos}
-      y={centerPos}
-      font-family="'Bitter', serif"
-      font-size={fontSize}
-      font-weight="600"
-      fill="#ffffff"
-      text-anchor="middle"
-      dominant-baseline="central"
-      class="logo-initial"
-    >
-      {venture.logo.initial}
-    </text>
-  </svg>
-
-  {/* Optional: Show venture name next to logo */}
-  {showName && (
-    <span class="logo-text" data-position={venture.logo.position}>
-      {venture.name}
-    </span>
-  )}
+    {/* Venture name text - BLACK, overlapping circle */}
+    {showName && (
+      <span
+        class="logo-text"
+        style={`
+          font-size: ${config.text}px;
+          margin-left: ${config.marginLeft}px;
+        `}
+      >
+        {venture.name}
+      </span>
+    )}
+  </div>
 </div>
 
-<style define:vars={{
-  primaryColor: style.primary,
-  headingFont: venture.typography.headingFont
-}}>
-  .logo-wrapper {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
+<style>
+  .logo-container {
+    display: inline-block;
   }
 
-  .logo-svg {
+  .logo-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .circle-bg {
+    position: relative;
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0.95;
     flex-shrink: 0;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   }
 
   .logo-text {
-    font-family: var(--headingFont);
+    font-family: 'Bitter', serif;
     font-weight: 600;
-    font-size: 32px;
-    color: var(--primaryColor);
+    color: #1a1a1a; /* ALWAYS black per design system */
     white-space: nowrap;
     letter-spacing: -0.5px;
-  }
-
-  .logo-text[data-position="lowercase"] {
-    text-transform: lowercase;
-  }
-
-  .logo-text[data-position="uppercase"] {
-    text-transform: uppercase;
+    z-index: 2;
+    position: relative;
+    line-height: 1;
   }
 
   /* Hover effect */
-  .logo-wrapper:hover .logo-svg {
+  .logo-wrapper:hover .circle-bg {
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
   }
 
@@ -164,7 +122,7 @@ const fontSize = fontSizeMap[size];
     }
   }
 
-  .logo-svg {
+  .logo-container {
     animation: logoFadeIn 0.4s ease-out;
   }
 </style>
