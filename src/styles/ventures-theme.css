@@ -1,0 +1,415 @@
+/**
+ * Venture Theme CSS Variables
+ *
+ * This file auto-applies theme tokens based on the data-venture attribute.
+ * All components use CSS Variables (--primary-color, --primary-gradient, etc.)
+ * which change automatically when data-venture switches.
+ *
+ * Usage:
+ * <html data-venture="amorphing">
+ *   <div class="circle-bg"><!-- renders with purple gradient --></div>
+ * </html>
+ *
+ * Change data-venture="brainfruit" → renders orange gradient (same HTML, different CSS)
+ *
+ * @generated from ventures.config.ts + styles.config.ts
+ * @last-updated 2026-01-28
+ */
+
+/* ==================== BRAINFRUIT (orange-gradient) ==================== */
+:root[data-venture="brainfruit"],
+.venture-brainfruit {
+  --venture-name: 'brainfruit';
+  --venture-style: 'orange-gradient';
+
+  /* Primary Colors */
+  --primary-color: #ff6b35;
+  --primary-color-light: #ff8555;
+  --primary-gradient: linear-gradient(135deg, #ff6b35 0%, #ff8555 100%);
+
+  /* Secondary & Support Colors */
+  --secondary-color: #434b4d;
+  --accent-color: #000000;
+  --text-on-primary: #ffffff;
+
+  /* Typography */
+  --heading-font: 'Bitter', serif;
+  --body-font: 'Roboto', sans-serif;
+
+  /* Interaction */
+  --border-color: var(--secondary-color);
+  --hover-opacity: 0.9;
+  --focus-outline-color: var(--primary-color);
+
+  /* Accessibility */
+  --wcag-contrast: '9.09:1';
+}
+
+/* ==================== PRIMOVIVO (blue-vibrant) ==================== */
+:root[data-venture="primovivo"],
+.venture-primovivo {
+  --venture-name: 'PRIMOVIVO';
+  --venture-style: 'blue-vibrant';
+
+  --primary-color: #3399ff;
+  --primary-color-light: #4da9ff;
+  --primary-gradient: linear-gradient(135deg, #3399ff 0%, #4da9ff 100%);
+
+  --secondary-color: #434b4d;
+  --accent-color: #000000;
+  --text-on-primary: #ffffff;
+
+  --heading-font: 'Bitter', serif;
+  --body-font: 'Roboto', sans-serif;
+
+  --border-color: var(--secondary-color);
+  --hover-opacity: 0.9;
+  --focus-outline-color: var(--primary-color);
+
+  --wcag-contrast: '8.21:1';
+}
+
+/* ==================== AMORPHING (purple-deep) ==================== */
+:root[data-venture="amorphing"],
+.venture-amorphing {
+  --venture-name: 'Amorphing';
+  --venture-style: 'purple-deep';
+
+  --primary-color: #8b5cf6;
+  --primary-color-light: #a78bfa;
+  --primary-gradient: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+
+  --secondary-color: #434b4d;
+  --accent-color: #000000;
+  --text-on-primary: #ffffff;
+
+  --heading-font: 'Bitter', serif;
+  --body-font: 'Roboto', sans-serif;
+
+  --border-color: var(--secondary-color);
+  --hover-opacity: 0.9;
+  --focus-outline-color: var(--primary-color);
+
+  --wcag-contrast: '7.52:1';
+}
+
+/* ==================== VENTURE-04 (emerald-fresh) ==================== */
+:root[data-venture="venture-04"],
+.venture-venture-04 {
+  --venture-name: 'Venture-04';
+  --venture-style: 'emerald-fresh';
+
+  --primary-color: #10b981;
+  --primary-color-light: #34d399;
+  --primary-gradient: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+
+  --secondary-color: #434b4d;
+  --accent-color: #000000;
+  --text-on-primary: #ffffff;
+
+  --heading-font: 'Bitter', serif;
+  --body-font: 'Roboto', sans-serif;
+
+  --border-color: var(--secondary-color);
+  --hover-opacity: 0.9;
+  --focus-outline-color: var(--primary-color);
+
+  --wcag-contrast: '10.15:1';
+}
+
+/* ==================== GREEN-P (green-fresh) ==================== */
+:root[data-venture="green-p"],
+.venture-green-p {
+  --venture-name: 'Green-P';
+  --venture-style: 'green-fresh';
+
+  --primary-color: #22c55e;
+  --primary-color-light: #4ade80;
+  --primary-gradient: linear-gradient(135deg, #22c55e 0%, #4ade80 100%);
+
+  --secondary-color: #434b4d;
+  --accent-color: #000000;
+  --text-on-primary: #ffffff;
+
+  --heading-font: 'Bitter', serif;
+  --body-font: 'Roboto', sans-serif;
+
+  --border-color: var(--secondary-color);
+  --hover-opacity: 0.9;
+  --focus-outline-color: var(--primary-color);
+
+  --wcag-contrast: '6.5:1';
+}
+
+/* ==================== UNIVERSAL COMPONENTS (venture-agnostic) ==================== */
+/* All following components use var(--primary-color) etc, so they adapt automatically */
+
+/* Circle/Logo Background */
+.circle-bg {
+  background: var(--primary-gradient);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.circle-bg.large {
+  width: 240px;
+  height: 240px;
+}
+
+.circle-bg.small {
+  width: 80px;
+  height: 80px;
+}
+
+/* Logo Initial Letter */
+.logo-initial {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  font-size: 72px;
+  fill: var(--text-on-primary);
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.circle-bg.large .logo-initial {
+  font-size: 120px;
+}
+
+.circle-bg.small .logo-initial {
+  font-size: 48px;
+}
+
+/* Logo Text (Venture Name) */
+.logo-text {
+  font-family: var(--heading-font);
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--primary-color);
+  z-index: 2;
+  position: relative;
+  margin-left: -55px;
+  white-space: nowrap;
+}
+
+.logo-text.centered {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+h4, h5, h6 {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+body {
+  font-family: var(--body-font);
+  color: var(--accent-color);
+}
+
+p, a, li {
+  font-family: var(--body-font);
+  color: var(--accent-color);
+}
+
+/* Links */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: opacity var(--hover-opacity) 0.2s ease;
+}
+
+a:hover {
+  opacity: var(--hover-opacity);
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: 2px;
+}
+
+/* Buttons */
+.button,
+button,
+.btn {
+  font-family: var(--body-font);
+  background: var(--primary-gradient);
+  color: var(--text-on-primary);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:hover,
+button:hover,
+.btn:hover {
+  opacity: var(--hover-opacity);
+  transform: translateY(-2px);
+}
+
+.button:focus,
+button:focus,
+.btn:focus {
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: -2px;
+}
+
+.button.secondary,
+button.secondary,
+.btn.secondary {
+  background: var(--secondary-color);
+  color: var(--text-on-primary);
+}
+
+/* Borders & Dividers */
+hr,
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 24px 0;
+}
+
+/* Code & Pre */
+code {
+  font-family: 'Monaco', 'Courier New', monospace;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--accent-color);
+}
+
+pre {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  border-left: 3px solid var(--primary-color);
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+/* Cards */
+.card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 24px;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.card.primary {
+  background: var(--primary-gradient);
+  color: var(--text-on-primary);
+  border: none;
+}
+
+/* Forms */
+input,
+textarea,
+select {
+  font-family: var(--body-font);
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--accent-color);
+  font-size: 16px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: -2px;
+  border-color: var(--primary-color);
+}
+
+label {
+  font-family: var(--body-font);
+  font-weight: 600;
+  color: var(--secondary-color);
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  background: var(--primary-gradient);
+  color: var(--text-on-primary);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--body-font);
+}
+
+.badge.secondary {
+  background: var(--secondary-color);
+  color: var(--text-on-primary);
+}
+
+/* Accessibility */
+::selection {
+  background: var(--primary-color);
+  color: var(--text-on-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-outline-color);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  a {
+    color: blue;
+  }
+
+  .button,
+  button,
+  .btn {
+    background: white;
+    border: 1px solid black;
+    color: black;
+  }
+}
+
+/* Dark Mode (Optional Future Enhancement) */
+@media (prefers-color-scheme: dark) {
+  :root[data-venture],
+  .venture-brainfruit,
+  .venture-primovivo,
+  .venture-amorphing,
+  .venture-venture-04,
+  .venture-green-p {
+    --accent-color: #ffffff;
+  }
+}
