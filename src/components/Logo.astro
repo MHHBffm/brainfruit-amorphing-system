@@ -1,0 +1,170 @@
+---
+/**
+ * Logo.astro
+ *
+ * Universal venture logo component.
+ * Renders SVG with venture-specific:
+ * - Circle gradient (from style)
+ * - Initial letter (from venture config)
+ * - Venture name text (optional)
+ *
+ * Usage:
+ * ---
+ * import Logo from '../components/Logo.astro';
+ * ---
+ *
+ * <Logo ventureKey="amorphing" showName size="medium" />
+ *
+ * Result: Purple circle with 'A', 'Amorphing' text
+ */
+
+import { getVentureWithStyle, isValidVentureKey, type VentureKey } from '../utilities/venture';
+
+interface Props {
+  ventureKey: VentureKey;
+  size?: 'small' | 'medium' | 'large'; // 80, 120, 240px
+  showName?: boolean;
+  className?: string;
+}
+
+const {
+  ventureKey,
+  size = 'medium',
+  showName = false,
+  className = ''
+} = Astro.props;
+
+if (!isValidVentureKey(ventureKey)) {
+  throw new Error(`Invalid venture key: ${ventureKey}`);
+}
+
+const { venture, style } = getVentureWithStyle(ventureKey);
+
+// Size mapping
+const sizeMap = {
+  small: 80,
+  medium: 120,
+  large: 240
+};
+
+const viewSize = sizeMap[size];
+const centerPos = viewSize / 2;
+const radius = centerPos - 12; // 12px padding
+
+// Font size scales with size
+const fontSizeMap = {
+  small: 48,
+  medium: 72,
+  large: 120
+};
+
+const fontSize = fontSizeMap[size];
+---
+
+<div class={`logo-wrapper ${className}`} data-venture={ventureKey}>
+  <svg
+    viewBox={`0 0 ${viewSize} ${viewSize}`}
+    width={viewSize}
+    height={viewSize}
+    xmlns="http://www.w3.org/2000/svg"
+    class="logo-svg"
+  >
+    <defs>
+      {/* Unique gradient ID per venture to avoid conflicts */}
+      <linearGradient
+        id={`gradient-${ventureKey}-${size}`}
+        x1="0%"
+        y1="0%"
+        x2="100%"
+        y2="100%"
+      >
+        <stop offset="0%" stop-color={style.primary} />
+        <stop offset="100%" stop-color={style.primaryLight} />
+      </linearGradient>
+    </defs>
+
+    {/* Circle with venture gradient */}
+    <circle
+      cx={centerPos}
+      cy={centerPos}
+      r={radius}
+      fill={`url(#gradient-${ventureKey}-${size})`}
+    />
+
+    {/* Initial letter */}
+    <text
+      x={centerPos}
+      y={centerPos}
+      font-family="'Bitter', serif"
+      font-size={fontSize}
+      font-weight="600"
+      fill="#ffffff"
+      text-anchor="middle"
+      dominant-baseline="central"
+      class="logo-initial"
+    >
+      {venture.logo.initial}
+    </text>
+  </svg>
+
+  {/* Optional: Show venture name next to logo */}
+  {showName && (
+    <span class="logo-text" data-position={venture.logo.position}>
+      {venture.name}
+    </span>
+  )}
+</div>
+
+<style define:vars={{
+  primaryColor: style.primary,
+  headingFont: venture.typography.headingFont
+}}>
+  .logo-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .logo-svg {
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+
+  .logo-text {
+    font-family: var(--headingFont);
+    font-weight: 600;
+    font-size: 32px;
+    color: var(--primaryColor);
+    white-space: nowrap;
+    letter-spacing: -0.5px;
+  }
+
+  .logo-text[data-position="lowercase"] {
+    text-transform: lowercase;
+  }
+
+  .logo-text[data-position="uppercase"] {
+    text-transform: uppercase;
+  }
+
+  /* Hover effect */
+  .logo-wrapper:hover .logo-svg {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  }
+
+  /* Animation on load */
+  @keyframes logoFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .logo-svg {
+    animation: logoFadeIn 0.4s ease-out;
+  }
+</style>
