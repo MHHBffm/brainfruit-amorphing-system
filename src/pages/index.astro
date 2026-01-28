@@ -27,8 +27,7 @@ const allVentures = getAllVenturesWithStyles();
 
 		<!-- The 5 Pillars -->
 		<section class="pillars">
-			<h2>The 5 Pillars of Amorphic Design</h2>
-
+		<h2>The 5 Pillars of Amorphing Design</h2>
 			<div class="pillar-grid">
 				<article class="pillar">
 					<h3>1. Data Transparency</h3>
@@ -80,8 +79,19 @@ const allVentures = getAllVenturesWithStyles();
 			<a href="mailto:hello@amorphing.com" class="cta-button">hello@amorphing.com</a>
 		</section>
 
-		<!-- Footer -->
+		<!-- Footer with Logos -->
 		<footer>
+			<div class="footer-ventures">
+				<h3>Built by:</h3>
+				<div class="footer-logos">
+					{allVentures.slice(0, 4).map((v) => (
+						<div class="footer-logo-item">
+							<Logo ventureKey={v.key} size="small" className="footer-logo" />
+							<p>{v.venture.name}</p>
+						</div>
+					))}
+				</div>
+			</div>
 			<p>© 2026 Amorphing · Part of <a href="https://brainfruit.de">brainfruit</a> · Built with <a href="https://astro.build">Astro</a></p>
 			<p class="footer-meta">Open Source · AI-Native · WCAG AAA</p>
 		</footer>
@@ -298,6 +308,45 @@ const allVentures = getAllVenturesWithStyles();
 			padding: calc(var(--spacing) * 4) 0;
 			color: var(--secondary-color);
 			border-top: 1px solid #e5e7eb;
+		}
+
+		.footer-ventures {
+			margin-bottom: calc(var(--spacing) * 6);
+		}
+
+		.footer-ventures h3 {
+			font-size: 1.25rem;
+			font-weight: 600;
+			color: var(--accent-color);
+			margin-bottom: calc(var(--spacing) * 3);
+			font-family: var(--heading-font);
+		}
+
+		.footer-logos {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+			gap: calc(var(--spacing) * 3);
+			max-width: 600px;
+			margin: 0 auto calc(var(--spacing) * 4);
+		}
+
+		.footer-logo-item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: calc(var(--spacing) * 2);
+		}
+
+		.footer-logo {
+			width: 60px;
+			height: 60px;
+		}
+
+		.footer-logo-item p {
+			font-size: 0.95rem;
+			font-weight: 500;
+			color: var(--accent-color);
+			margin: 0;
 		}
 
 		footer p {

@@ -45,7 +45,7 @@ export const ventures = {
    * Style: Blue (trustworthy, scientific, professional)
    */
   primovivo: {
-    name: 'PRIMOVIVO',
+    name: 'primovivo',
     domain: 'primovivo.com',
     style: 'blue-vibrant',
     logo: {
@@ -66,7 +66,7 @@ export const ventures = {
    * Style: Purple (creative, innovative, technical)
    */
   amorphing: {
-    name: 'Amorphing',
+    name: 'amorphing',
     domain: 'amorphing.com',
     style: 'purple-deep',
     logo: {
