@@ -1,74 +1,28 @@
 ---
-const siteTitle = "Amorphing · Responsive Brand Design";
-const siteDescription = "AI-native brand systems that morph across ventures, languages, and contexts. Built with parametric design, SSOT principles, and radical transparency.";
-const baseUrl = "https://amorphing.com";
+import VentureLayout from '../components/VentureLayout.astro';
+import Logo from '../components/Logo.astro';
+import { getVentureWithStyle, getAllVenturesWithStyles } from '../utilities/venture';
+
+const ventureKey = 'amorphing';
+const { venture, style } = getVentureWithStyle(ventureKey);
+const allVentures = getAllVenturesWithStyles();
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="generator" content={Astro.generator} />
-
-	<!-- Primary Meta Tags -->
-	<title>{siteTitle}</title>
-	<meta name="title" content={siteTitle} />
-	<meta name="description" content={siteDescription} />
-
-	<!-- Open Graph / Facebook -->
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content={baseUrl} />
-	<meta property="og:title" content={siteTitle} />
-	<meta property="og:description" content={siteDescription} />
-
-	<!-- Twitter -->
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content={baseUrl} />
-	<meta property="twitter:title" content={siteTitle} />
-	<meta property="twitter:description" content={siteDescription} />
-
-	<!-- Fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-
-	<!-- Favicon -->
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-	<!-- JSON-LD Structured Data -->
-	<script type="application/ld+json" set:html={JSON.stringify({
-		"@context": "https://schema.org",
-		"@type": "Organization",
-		"name": "Amorphing",
-		"description": "AI-native brand systems that morph across contexts",
-		"url": baseUrl,
-		"logo": `${baseUrl}/logo.svg`,
-		"sameAs": []
-	})} />
-</head>
-<body>
+<VentureLayout
+	ventureKey={ventureKey}
+	title="Amorphing · Responsive Brand Design"
+	description="AI-native brand systems that morph across ventures, languages, and contexts. Built with parametric design, SSOT principles, and radical transparency."
+	lang="en"
+>
 	<main>
 		<!-- Hero Section -->
 		<section class="hero">
 			<div class="logo-container">
-				<svg class="logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-					<!-- Circle -->
-					<circle cx="100" cy="100" r="90" fill="#8b5cf6" />
-					<!-- Letter A (centered) -->
-					<text x="100" y="100"
-					      font-family="Roboto Slab, serif"
-					      font-size="120"
-					      font-weight="600"
-					      fill="white"
-					      text-anchor="middle"
-					      dominant-baseline="central">A</text>
-				</svg>
-				<h1 class="venture-name">Amorphing</h1>
+				<Logo ventureKey={ventureKey} showName size="medium" />
 			</div>
 
 			<p class="tagline">Responsive Brand Design</p>
-			<p class="description">{siteDescription}</p>
+			<p class="description">{venture.description}</p>
 		</section>
 
 		<!-- The 5 Pillars -->
