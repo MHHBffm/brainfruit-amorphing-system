@@ -1,14 +1,25 @@
 {
-  "name": "amorphing-site",
+  "name": "brainfruit-amorphing-system",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Universal venture design system - parametric sites for all brainfruit ventures",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "dev:amorphing": "cross-env BUILD_FOR_VENTURE=amorphing astro dev",
+    "dev:brainfruit": "cross-env BUILD_FOR_VENTURE=brainfruit astro dev",
+    "dev:primovivo": "cross-env BUILD_FOR_VENTURE=primovivo astro dev",
+    "build:amorphing": "cross-env BUILD_FOR_VENTURE=amorphing astro build",
+    "build:brainfruit": "cross-env BUILD_FOR_VENTURE=brainfruit astro build",
+    "build:primovivo": "cross-env BUILD_FOR_VENTURE=primovivo astro build",
+    "build:all": "npm run build:amorphing && npm run build:brainfruit && npm run build:primovivo"
   },
   "dependencies": {
     "astro": "^5.16.16"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

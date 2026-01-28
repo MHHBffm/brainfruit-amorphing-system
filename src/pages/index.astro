@@ -63,65 +63,13 @@ const allVentures = getAllVenturesWithStyles();
 			<p class="ventures-desc">Four ventures, one design DNA. Watch as brand identity morphs across contexts:</p>
 
 			<div class="venture-grid">
-				<div class="venture-card" style="--venture-color: #ff6b35;">
-					<svg class="venture-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="60" cy="60" r="54" fill="#ff6b35" />
-						<text x="60" y="60"
-						      font-family="Roboto Slab, serif"
-						      font-size="72"
-						      font-weight="600"
-						      fill="white"
-						      text-anchor="middle"
-						      dominant-baseline="central">b</text>
-					</svg>
-					<h3>brainfruit</h3>
-					<p>Venture Builder · Orange</p>
-				</div>
-
-				<div class="venture-card" style="--venture-color: #3399ff;">
-					<svg class="venture-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="60" cy="60" r="54" fill="#3399ff" />
-						<text x="60" y="60"
-						      font-family="Roboto Slab, serif"
-						      font-size="72"
-						      font-weight="600"
-						      fill="white"
-						      text-anchor="middle"
-						      dominant-baseline="central">P</text>
-					</svg>
-					<h3>PRIMOVIVO</h3>
-					<p>Interior Design · Blue</p>
-				</div>
-
-				<div class="venture-card" style="--venture-color: #8b5cf6;">
-					<svg class="venture-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="60" cy="60" r="54" fill="#8b5cf6" />
-						<text x="60" y="60"
-						      font-family="Roboto Slab, serif"
-						      font-size="72"
-						      font-weight="600"
-						      fill="white"
-						      text-anchor="middle"
-						      dominant-baseline="central">A</text>
-					</svg>
-					<h3>Amorphing</h3>
-					<p>Brand Design · Purple</p>
-				</div>
-
-				<div class="venture-card" style="--venture-color: #10b981;">
-					<svg class="venture-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="60" cy="60" r="54" fill="#10b981" />
-						<text x="60" y="60"
-						      font-family="Roboto Slab, serif"
-						      font-size="72"
-						      font-weight="600"
-						      fill="white"
-						      text-anchor="middle"
-						      dominant-baseline="central">V</text>
-					</svg>
-					<h3>Venture 04</h3>
-					<p>Coming Soon · Emerald</p>
-				</div>
+				{allVentures.slice(0, 4).map((v) => (
+					<div class="venture-card" style={`--venture-color: ${v.style.primary};`}>
+						<Logo ventureKey={v.key} size="small" className="venture-logo-component" />
+						<h3>{v.venture.name}</h3>
+						<p>{v.venture.description}</p>
+					</div>
+				))}
 			</div>
 		</section>
 
@@ -140,15 +88,10 @@ const allVentures = getAllVenturesWithStyles();
 	</main>
 
 	<style>
+		/* Page uses CSS Variables from ventures-theme.css */
+		/* All venture-specific colors automatically applied via data-venture attribute */
+
 		:root {
-			--purple: #8b5cf6;
-			--purple-dark: #7c3aed;
-			--gray-50: #f9fafb;
-			--gray-100: #f3f4f6;
-			--gray-200: #e5e7eb;
-			--gray-700: #374151;
-			--gray-800: #1f2937;
-			--gray-900: #111827;
 			--spacing: 8px;
 		}
 
@@ -159,10 +102,10 @@ const allVentures = getAllVenturesWithStyles();
 		}
 
 		body {
-			font-family: 'Roboto', sans-serif;
+			font-family: var(--body-font);
 			line-height: 1.6;
-			color: var(--gray-800);
-			background: var(--gray-50);
+			color: var(--accent-color);
+			background: #f9fafb;
 		}
 
 		main {
@@ -192,23 +135,23 @@ const allVentures = getAllVenturesWithStyles();
 		}
 
 		.venture-name {
-			font-family: 'Roboto Slab', serif;
+			font-family: var(--heading-font);
 			font-size: 4rem;
 			font-weight: 600;
-			color: var(--purple);
+			color: var(--primary-color);
 			margin: 0;
 		}
 
 		.tagline {
 			font-size: 1.5rem;
 			font-weight: 500;
-			color: var(--gray-700);
+			color: var(--secondary-color);
 			margin-bottom: calc(var(--spacing) * 2);
 		}
 
 		.description {
 			font-size: 1.125rem;
-			color: var(--gray-700);
+			color: var(--secondary-color);
 			max-width: 700px;
 			margin: 0 auto;
 		}
@@ -222,11 +165,11 @@ const allVentures = getAllVenturesWithStyles();
 		}
 
 		.pillars h2 {
-			font-family: 'Roboto Slab', serif;
+			font-family: var(--heading-font);
 			font-size: 2.5rem;
 			text-align: center;
 			margin-bottom: calc(var(--spacing) * 6);
-			color: var(--gray-900);
+			color: var(--accent-color);
 		}
 
 		.pillar-grid {
@@ -238,18 +181,18 @@ const allVentures = getAllVenturesWithStyles();
 
 		.pillar {
 			padding: calc(var(--spacing) * 3);
-			border-left: 4px solid var(--purple);
+			border-left: 4px solid var(--primary-color);
 		}
 
 		.pillar h3 {
-			font-family: 'Roboto Slab', serif;
+			font-family: var(--heading-font);
 			font-size: 1.25rem;
 			margin-bottom: calc(var(--spacing) * 2);
-			color: var(--purple);
+			color: var(--primary-color);
 		}
 
 		.pillar p {
-			color: var(--gray-700);
+			color: var(--secondary-color);
 			line-height: 1.7;
 		}
 
@@ -259,17 +202,17 @@ const allVentures = getAllVenturesWithStyles();
 		}
 
 		.ventures h2 {
-			font-family: 'Roboto Slab', serif;
+			font-family: var(--heading-font);
 			font-size: 2.5rem;
 			text-align: center;
 			margin-bottom: calc(var(--spacing) * 2);
-			color: var(--gray-900);
+			color: var(--accent-color);
 		}
 
 		.ventures-desc {
 			text-align: center;
 			font-size: 1.125rem;
-			color: var(--gray-700);
+			color: var(--secondary-color);
 			margin-bottom: calc(var(--spacing) * 6);
 		}
 
@@ -284,7 +227,7 @@ const allVentures = getAllVenturesWithStyles();
 			border-radius: calc(var(--spacing) * 2);
 			padding: calc(var(--spacing) * 4);
 			text-align: center;
-			border: 2px solid var(--gray-200);
+			border: 2px solid #e5e7eb;
 			transition: all 0.3s ease;
 		}
 
@@ -294,21 +237,19 @@ const allVentures = getAllVenturesWithStyles();
 			transform: translateY(-4px);
 		}
 
-		.venture-logo {
-			width: 80px;
-			height: 80px;
+		.venture-logo-component {
 			margin-bottom: calc(var(--spacing) * 2);
 		}
 
 		.venture-card h3 {
-			font-family: 'Roboto Slab', serif;
+			font-family: var(--heading-font);
 			font-size: 1.5rem;
 			margin-bottom: calc(var(--spacing));
-			color: var(--gray-900);
+			color: var(--accent-color);
 		}
 
 		.venture-card p {
-			color: var(--gray-700);
+			color: var(--secondary-color);
 			font-size: 0.875rem;
 		}
 
@@ -316,14 +257,14 @@ const allVentures = getAllVenturesWithStyles();
 		.cta {
 			text-align: center;
 			padding: calc(var(--spacing) * 10) calc(var(--spacing) * 4);
-			background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+			background: var(--primary-gradient);
 			border-radius: calc(var(--spacing) * 2);
 			color: white;
 			margin-bottom: calc(var(--spacing) * 6);
 		}
 
 		.cta h2 {
-			font-family: 'Roboto Slab', serif;
+			font-family: var(--heading-font);
 			font-size: 2.5rem;
 			margin-bottom: calc(var(--spacing) * 2);
 		}
@@ -338,7 +279,7 @@ const allVentures = getAllVenturesWithStyles();
 			display: inline-block;
 			padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
 			background: white;
-			color: var(--purple);
+			color: var(--primary-color);
 			text-decoration: none;
 			border-radius: calc(var(--spacing));
 			font-weight: 600;
@@ -347,7 +288,7 @@ const allVentures = getAllVenturesWithStyles();
 		}
 
 		.cta-button:hover {
-			background: var(--gray-100);
+			background: #f3f4f6;
 			transform: scale(1.05);
 		}
 
@@ -355,8 +296,8 @@ const allVentures = getAllVenturesWithStyles();
 		footer {
 			text-align: center;
 			padding: calc(var(--spacing) * 4) 0;
-			color: var(--gray-700);
-			border-top: 1px solid var(--gray-200);
+			color: var(--secondary-color);
+			border-top: 1px solid #e5e7eb;
 		}
 
 		footer p {
@@ -364,7 +305,7 @@ const allVentures = getAllVenturesWithStyles();
 		}
 
 		footer a {
-			color: var(--purple);
+			color: var(--primary-color);
 			text-decoration: none;
 		}
 
@@ -374,7 +315,7 @@ const allVentures = getAllVenturesWithStyles();
 
 		.footer-meta {
 			font-size: 0.875rem;
-			color: var(--gray-700);
+			color: var(--secondary-color);
 		}
 
 		/* Responsive */
@@ -400,5 +341,4 @@ const allVentures = getAllVenturesWithStyles();
 			}
 		}
 	</style>
-</body>
-</html>
+</VentureLayout>
